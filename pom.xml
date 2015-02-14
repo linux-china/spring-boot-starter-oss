@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.mvnsearch.boot</groupId>
+    <artifactId>spring-boot-starter-oss</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>spring-boot-starter-oss</name>
+    <url>https://github.com/linux-china/spring-boot-starter-oss</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <boot.version>1.2.1.RELEASE</boot.version>
+    </properties>
+
+    <developers>
+        <developer>
+            <id>linux_china</id>
+            <name>Jacky Chan</name>
+            <email>libing.chen@gmail.com</email>
+            <url>https://twitter.com/linux_china</url>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:linux-china/spring-boot-starter-oss.git</connection>
+        <developerConnection>scm:git:git@github.com:linux-china/spring-boot-starter-oss.git</developerConnection>
+        <url>https://github.com/linux-china/spring-boot-starter-oss</url>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator</artifactId>
+            <version>${boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-oss</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
