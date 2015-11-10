@@ -42,6 +42,7 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
         this.bucketName = bucketName;
     }
 
+    @SuppressWarnings("deprecation")
     public void afterPropertiesSet() throws Exception {
         this.ossClient = new OSSClient(accessKey, accessSecret);
     }
