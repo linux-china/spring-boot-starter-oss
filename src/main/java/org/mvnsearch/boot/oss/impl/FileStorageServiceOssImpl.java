@@ -102,12 +102,15 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
     }
 
     public static String getUuidName(String name) {
-        String key = UUID.randomUUID().toString().replaceAll("\\-", "");
+        String uuid = UUID.randomUUID().toString().replaceAll("\\-", "");
+        String newName = uuid;
         if (name != null && name.contains(".")) {
-            return key + name.substring(name.lastIndexOf(".")).toLowerCase();
-        } else {
-            return key;
+            newName = uuid + name.substring(name.lastIndexOf(".")).toLowerCase();
         }
+        if (name != null && name.contains("/")) {
+            newName = name.substring(0, name.indexOf("/") + 1) + newName;
+        }
+        return newName;
     }
 
     /**
