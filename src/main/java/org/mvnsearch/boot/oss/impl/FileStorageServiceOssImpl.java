@@ -69,9 +69,7 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
      * @throws IOException IO Exception
      */
     public void delete(String fileName) throws IOException {
-        if (!Objects.equals("avatar.png", fileName)) {
-            ossClient.deleteObject(bucketName, fileName);
-        }
+        ossClient.deleteObject(bucketName, fileName);
     }
 
     /**
