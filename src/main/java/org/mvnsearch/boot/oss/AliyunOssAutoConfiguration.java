@@ -1,6 +1,7 @@
 package org.mvnsearch.boot.oss;
 
 import com.aliyun.oss.OSSClient;
+import org.mvnsearch.boot.oss.impl.FileStorageServiceOssImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,5 +23,19 @@ public class AliyunOssAutoConfiguration {
     @Bean
     public OSSClient ossClient() {
         return new OSSClient(properties.getKey(), properties.getSecret());
+    }
+
+    @Bean
+    public FileStorageService fileStorageService() {
+        FileStorageServiceOssImpl fileStorageServiceOss = new FileStorageServiceOssImpl();
+        fileStorageServiceOss.setAccessKey(properties.getKey());
+        fileStorageServiceOss.setAccessSecret(properties.getSecret());
+        fileStorageServiceOss.setBucketName(properties.getBucket());
+        return fileStorageServiceOss;
+    }
+
+    @Bean
+    public AliyunOssHealthIndicator aliyunOssHealthIndicator() {
+        return new AliyunOssHealthIndicator();
     }
 }
