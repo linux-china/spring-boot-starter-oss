@@ -40,4 +40,3 @@ If you want to setup bean in Spring xml file, please use following code:
           <property name="accessSecret" value="access_key"/>
           <property name="bucketName" value="bucket_name"/>
      </bean>
- 
