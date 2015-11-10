@@ -4,6 +4,7 @@ import com.aliyun.oss.OSSClient;
 import org.mvnsearch.boot.oss.impl.FileStorageServiceOssImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +22,13 @@ public class AliyunOssAutoConfiguration {
     private AliyunOssProperties properties;
 
     @Bean
+    @ConditionalOnMissingBean
     public OSSClient ossClient() {
         return new OSSClient(properties.getKey(), properties.getSecret());
     }
 
     @Bean
+    @ConditionalOnMissingBean
     public FileStorageService fileStorageService() {
         FileStorageServiceOssImpl fileStorageServiceOss = new FileStorageServiceOssImpl();
         fileStorageServiceOss.setAccessKey(properties.getKey());
