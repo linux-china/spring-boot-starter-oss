@@ -11,8 +11,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
         prefix = "spring.oss"
 )
 public class AliyunOssProperties {
+    /**
+     * aliyun access key
+     */
     private String key;
+    /**
+     * aliyun access secret
+     */
     private String secret;
+    /**
+     * default bucket
+     */
     private String bucket;
 
     public String getKey() {
