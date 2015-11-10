@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AliyunOssProperties {
     private String key;
     private String secret;
+    private String bucket;
 
     public String getKey() {
         return key;
@@ -28,5 +29,13 @@ public class AliyunOssProperties {
 
     public void setSecret(String secret) {
         this.secret = secret;
+    }
+
+    public String getBucket() {
+        return bucket;
+    }
+
+    public void setBucket(String bucket) {
+        this.bucket = bucket;
     }
 }
