@@ -62,6 +62,22 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
     }
 
     /**
+     * save file to the directory
+     *
+     * @param directory directory
+     * @param ds        data source
+     * @return file name with directory name
+     * @throws IOException IO Exception
+     */
+    public String saveToDirectory(String directory, DataSource ds) throws IOException {
+        String newName;
+        newName = directory + "/" + getUuidName(ds.getName());
+        byte[] content = IOUtils.toByteArray(ds.getInputStream());
+        upload(bucketName, newName, content);
+        return newName;
+    }
+
+    /**
      * delete file
      *
      * @param fileName file name
@@ -106,9 +122,6 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
         String newName = uuid;
         if (name != null && name.contains(".")) {
             newName = uuid + name.substring(name.lastIndexOf(".")).toLowerCase();
-        }
-        if (name != null && name.contains("/")) {
-            newName = name.substring(0, name.indexOf("/") + 1) + newName;
         }
         return newName;
     }
