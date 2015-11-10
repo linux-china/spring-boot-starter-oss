@@ -20,6 +20,16 @@ public interface FileStorageService {
     public String save(DataSource ds) throws IOException;
 
     /**
+     * save file to the directory
+     *
+     * @param directory directory
+     * @param ds        data source
+     * @return file name with directory name
+     * @throws IOException IO Exception
+     */
+    public String saveToDirectory(String directory, DataSource ds) throws IOException;
+
+    /**
      * delete file
      *
      * @param fileName file name
