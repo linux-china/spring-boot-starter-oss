@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(OSSClient.class)
 @EnableConfigurationProperties(AliyunOssProperties.class)
 public class AliyunOssAutoConfiguration {
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private AliyunOssProperties properties;
 
