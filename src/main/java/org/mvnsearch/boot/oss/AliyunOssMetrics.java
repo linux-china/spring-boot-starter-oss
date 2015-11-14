@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * aliyun OSS metrics
  *
- * @author leijuan
+ * @author linux_china
  */
 @Component
 public class AliyunOssMetrics implements PublicMetrics {
