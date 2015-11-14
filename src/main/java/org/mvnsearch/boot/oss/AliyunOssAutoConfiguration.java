@@ -41,4 +41,14 @@ public class AliyunOssAutoConfiguration {
     public AliyunOssHealthIndicator aliyunOssHealthIndicator() {
         return new AliyunOssHealthIndicator();
     }
+
+    @Bean
+    public AliyunOssMetrics aliyunOssMetrics() {
+        return new AliyunOssMetrics();
+    }
+
+    @Bean
+    public AliyunOssEndpoint aliyunOssEndpoint() {
+        return new AliyunOssEndpoint();
+    }
 }
