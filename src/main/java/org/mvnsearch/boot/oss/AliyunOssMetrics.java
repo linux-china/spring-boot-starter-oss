@@ -19,10 +19,10 @@ public class AliyunOssMetrics implements PublicMetrics {
 
     public Collection<Metric<?>> metrics() {
         List<Metric<?>> metrics = new LinkedList<Metric<?>>();
-        metrics.add(new Metric<Number>("oss.upload.success", FileStorageServiceOssImpl.fileUploadSuccess));
-        metrics.add(new Metric<Number>("oss.upload.fail", FileStorageServiceOssImpl.fileUploadFail));
-        metrics.add(new Metric<Number>("oss.get.count", FileStorageServiceOssImpl.fileGetCounts));
-        metrics.add(new Metric<Number>("oss.delete.count", FileStorageServiceOssImpl.fileDeleteCounts));
+        metrics.add(new Metric<Number>("oss.upload.success", FileStorageServiceOssImpl.fileUploadSuccess.get()));
+        metrics.add(new Metric<Number>("oss.upload.fail", FileStorageServiceOssImpl.fileUploadFail.get()));
+        metrics.add(new Metric<Number>("oss.get.count", FileStorageServiceOssImpl.fileGetCounts.get()));
+        metrics.add(new Metric<Number>("oss.delete.count", FileStorageServiceOssImpl.fileDeleteCounts.get()));
         return metrics;
     }
 
