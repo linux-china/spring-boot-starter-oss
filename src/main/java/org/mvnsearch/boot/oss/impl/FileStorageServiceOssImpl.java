@@ -13,6 +13,7 @@ import javax.activation.MimetypesFileTypeMap;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * file storage service OSS implementation
@@ -25,6 +26,10 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
     String bucketName;
     public static MimetypesFileTypeMap fileTypeMap = new MimetypesFileTypeMap();
     public static String DEFAULT_CONTENT_TYPE = "application/octet-stream";
+    public static final AtomicLong fileUploadSuccess = new AtomicLong();
+    public static final AtomicLong fileUploadFail = new AtomicLong();
+    public static final AtomicLong fileGetCounts = new AtomicLong();
+    public static final AtomicLong fileDeleteCounts = new AtomicLong();
     /**
      * oss client
      */
@@ -86,6 +91,7 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
      */
     public void delete(String fileName) throws IOException {
         ossClient.deleteObject(bucketName, fileName);
+        fileDeleteCounts.incrementAndGet();
     }
 
     /**
@@ -100,6 +106,7 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
         if (ossObject != null) {
             ByteArrayDataSource ds = new ByteArrayDataSource(IOUtils.toByteArray(ossObject.getObjectContent()), getContentType(fileName));
             ds.setName(fileName);
+            fileGetCounts.incrementAndGet();
             return ds;
         }
         return null;
@@ -141,8 +148,10 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
             metadata.setContentType(getContentType(fileName));
             metadata.setContentLength(content.length);
             ossClient.putObject(bucketName, fileName, bis, metadata);
+            fileUploadSuccess.incrementAndGet();
         } catch (Exception ignore) {
             ossClient.putObject(bucketName, fileName, bis, metadata);
+            fileUploadFail.incrementAndGet();
         }
     }
 
