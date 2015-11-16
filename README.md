@@ -40,3 +40,19 @@ If you want to setup bean in Spring xml file, please use following code:
           <property name="accessSecret" value="access_key"/>
           <property name="bucketName" value="bucket_name"/>
      </bean>
+     
+### spring-boot-start-oss service List
+
+* org.mvnsearch.boot.oss.FileStorageService: API to operate the file
+* com.aliyun.oss.OSSClient: aliyun OSSClient
+
+Please use FileStorageService as usual, not OSSClient.
+     
+### Aliyun OSS endpoint
+
+Please visit http://localhost:8080/oss to view detail information.
+
+
+### FaQ
+
+* Please upload a "ok.txt" under your buket for health indicator.
