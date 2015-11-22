@@ -147,6 +147,7 @@ public class FileStorageServiceOssImpl implements FileStorageService, Initializi
         try {
             metadata.setContentType(getContentType(fileName));
             metadata.setContentLength(content.length);
+            metadata.setCacheControl("public, max-age=31536000");
             ossClient.putObject(bucketName, fileName, bis, metadata);
             fileUploadSuccess.incrementAndGet();
         } catch (Exception ignore) {
