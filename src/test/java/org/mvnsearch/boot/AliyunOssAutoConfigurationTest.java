@@ -6,14 +6,19 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mvnsearch.boot.oss.AliyunOssAutoConfiguration;
 import org.mvnsearch.boot.oss.AliyunOssProperties;
 import org.mvnsearch.boot.oss.ByteArrayDataSource;
 import org.mvnsearch.boot.oss.FileStorageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.activation.DataSource;
 
@@ -22,31 +27,11 @@ import javax.activation.DataSource;
  *
  * @author linux_china
  */
-@Configuration
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = OssTestApplication.class)
 public class AliyunOssAutoConfigurationTest {
-    private AnnotationConfigApplicationContext context;
-
-    @Before
-    public void setUp() {
-        this.context = new AnnotationConfigApplicationContext(
-                AliyunOssAutoConfigurationTest.class, AliyunOssAutoConfiguration.class);
-    }
-
-    @After
-    public void close() {
-        if (this.context != null) {
-            this.context.close();
-        }
-    }
-
-    @Bean
-    public AliyunOssProperties properties() {
-        AliyunOssProperties properties = new AliyunOssProperties();
-        properties.setKey("xxx");
-        properties.setSecret("xxxx");
-        properties.setBucket("xxx-dev");
-        return properties;
-    }
+    @Autowired
+    private ApplicationContext context;
 
     @Test
     public void clientExists() {
