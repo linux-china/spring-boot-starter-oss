@@ -23,6 +23,10 @@ public class AliyunOssProperties {
      * default bucket
      */
     private String bucket;
+    /**
+     * endpoint
+     */
+    private String endpoint = "http://oss.aliyuncs.com";
 
     public String getKey() {
         return key;
@@ -46,5 +50,13 @@ public class AliyunOssProperties {
 
     public void setBucket(String bucket) {
         this.bucket = bucket;
+    }
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 }
