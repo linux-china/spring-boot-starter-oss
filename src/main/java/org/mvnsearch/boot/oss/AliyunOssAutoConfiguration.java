@@ -25,7 +25,7 @@ public class AliyunOssAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public OSSClient ossClient() {
-        return new OSSClient(properties.getKey(), properties.getSecret());
+        return new OSSClient(properties.getEndpoint(), properties.getKey(), properties.getSecret());
     }
 
     @Bean
