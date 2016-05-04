@@ -28,7 +28,7 @@ public class AliyunOssEndpoint extends AbstractEndpoint {
 
     public Object invoke() {
         Map<String, Object> info = new HashMap<String, Object>();
-        info.put("version", "2.0.6");
+        info.put("version", "2.2.1");
         info.put("vendor", "http://www.aliyun.com/");
         info.put("bucket", properties.getBucket());
         info.put("upload.success", FileStorageServiceOssImpl.fileUploadSuccess.get());
